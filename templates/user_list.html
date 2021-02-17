@@ -26,7 +26,6 @@
 <body>
 
 <!-- 네비게이션 바 -->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">소박하지만 그룹입니다</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,10 +35,10 @@
         <div class="container-fluid">
             <ul class="navbar-nav nav-fill mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="list">랭킹</a>
+                    <a class="nav-link active" href="/list">랭킹</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,36 +58,65 @@
                 <li class="nav-item ">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">게시판</a>
                 </li>
+                <li class="nav-item">
+                    <form class="d-flex justify-content-end">
+                        <button class="btn btn-primary " type="Sign In" onclick="alert('미구현')">Sign In</button>
+                        <button class="btn btn-secondary" type="submit">Sign Up</button>
 
-                <li class="nav-item d-flex justify-content-end">
-                    <form class="d-flex justify-content-end" action="/signin" method="get">
-                        <button class="btn btn-primary "  onclick="alert('미구현')">Sign In</button>
                     </form>
-                    <form class="d-flex justify-content-end" action="/signup" method="get">
-                        <button class="btn btn-secondary"  >Sign Up</button>
-                    </form>
-
                 </li>
             </ul>
+
         </div>
     </div>
-
-
 </nav>
-
-
 <!-- 메인 화면 -->
+
 <main class="container">
 
     <div class="starter-template text-center py-5 px-3">
         <h1>소박하지만 그룹입니다</h1>
         <p class="lead"> 알고리즘 기초 난이도인 Bronze부터  숙달된 난이도인 Diamond까지 <br>
-            DFS, BFS 의 기본적인 알고리즘부터  TreeDP, Segtree 의 중급 알고리즘을 거쳐 HLD, LCA 의 고급 알고리즘까지<br>
-
-            대충 소개하는 글
+            DFS, BFS 의 기본적인 알고리즘부터  TreeDP, Segtree 의 중급 알고리즘을 거쳐 HLD, LCA 의 고급 알고리즘까지
         </p>
     </div>
+    <div class="table-responsive">
+        <table class="table">
+            <caption>유저 리스트</caption>
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">이름</th>
+                <th scope="col">학번</th>
+                <th scope="col">맞은 문제</th>
+                <th scope="col">제출</th>
+                <th scope="col">정답 비율</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if user_data_list %}
+                {% for user in user_data_list %}
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
 
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <th scope="row">no date</th>
+                    <td colspan="5">데이터가 존재하지 않습니다.</td>
+
+                </tr>
+            {% endif %}
+
+            </tbody>
+        </table>
+    </div>
 </main>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>

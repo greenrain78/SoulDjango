@@ -1,0 +1,237 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="bootstrap을 이용한 임시 페이지">
+    <meta name="author" content="greenrain">
+    <title>소박하지만 그룹입니다</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"  >
+
+    <style>
+        .container {
+            background-color: #ffffff;
+        }
+        body {
+            background-color: #efefef;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+<!-- 네비게이션 바 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">소박하지만 그룹입니다</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container-fluid">
+            <ul class="navbar-nav nav-fill mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/list">랭킹</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        문제들
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">추천 문제</a></li>
+                        <li><a class="dropdown-item" href="#">시도했지만 맞지 못한 문제</a></li>
+                        <li><a class="dropdown-item" href="#">맞은 문제</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">등록된 문제 리스트</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">게시판</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">게시판</a>
+                </li>
+                <li class="nav-item">
+                    <form class="d-flex justify-content-end">
+                        <button class="btn btn-primary " type="Sign In" onclick="alert('미구현')">Sign In</button>
+                        <button class="btn btn-secondary" type="submit">Sign Up</button>
+
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!-- 메인 화면 -->
+
+<main class="container">
+    <div class="starter-template text-center py-5 px-3">
+        <h1>소박하지만 그룹 회원가입</h1>
+        <p class="lead"> 알고리즘 기초 난이도인 Bronze부터  숙달된 난이도인 Diamond까지 <br>
+            DFS, BFS 의 기본적인 알고리즘부터  TreeDP, Segtree 의 중급 알고리즘을 거쳐 HLD, LCA 의 고급 알고리즘까지</p>
+    </div>
+    <hr class="my-4">
+
+    <div class="bd-example">
+        <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+            <a class="navbar-brand" href="#">사이트 이용약관</a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#1">제1조</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#2">제2조</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#3">제3조</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#4">제4조</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#5">제5조</a>
+                </li>
+            </ul>
+        </nav>
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0" style="height: 250px; overflow-y: scroll;">
+            <h4 id="1">제1조 (목적)</h4>
+            <p>
+                이 서비스 이용약관(이하 “약관이라고 한다)은 대한법률구조공단(이하 "공단"이라 한다)이 제공하는 모든 온라인 개인회생, 개인파산 및 면책(이하 "개인회생 전산 웹사이트"라고 한다)의 이용조건, 절차, 방법 및 기타 필요한 사항을 규정함을 목적으로 한다.
+            </p>
+            <h4 id="2">제2조 (약관의 효력과 변경)</h4>
+            <p>
+                ① 이 약관은 개인회생 전산 웹사이트를 이용하고자 하는 자가 회원에 가입함과 동시에 효력을 발생한다. <br>
+                ② 공단은 합리적인 이유가 있을 때에는 이 약관을 개정할 수 있으며, 변경된 약관은 지체 없이 개인회생 전산 웹사이트 (resu.klac.or.kr/)에 공시한다.<br>
+                ③ 이 약관의 내용은 개인회생 전산 웹사이트에 항상 게시한다.
+            </p>
+
+            <h4 id="3">제3조 (약관 외 준칙)
+            </h4>
+            <p>
+                ① 이 약관에 명시되지 아니한 사항에 대하여는 관계 법령 및 기타 관습에 따른다.
+            </p>
+
+            <h4 id="4">제4조 (회원가입)</h4>
+            <p>
+                ① 회원으로 등록하여 서비스를 이용하고자 하는 자는 공단에서 요청하는 최소한의 개인 신상정보를 제공하여야 한다.<br>
+                ② 회원가입은 개인회생 전산 서비스 이용 희망자가 본 이용약관에 동의한 후, 회원가입 신청양식에 따른 기재를 하여 회원가입신청을 하고, 이에 대하여 공단이 승낙함으로써 성립한다.
+            </p>
+
+            <h4 id="5">제5조 (회원등록의 제한)</h4>
+            <p>
+                공단은 다음 각 호의 1에 해당하는 회원가입 신청에 대하여는 이를 승낙하지 아니할 수 있고, 그 사유가 해소될 때까지 승낙을 유보할 수 있다.<br>
+                ① 주민등록 상의 본인 실명과 다른 경우<br>
+                ② 타인의 명의를 사용하여 신청한 경우<br>
+                ③ 회원가입 신청서의 필요내용을 허위로 기재한 경우<br>
+                ④ 사회의 안녕 및 질서 기타 미풍양속을 저해할 목적으로 신청한 경우<br>
+                ⑤ 소정의 회원등록요건을 충족하지 못한 경우<br>
+                ⑥ 시스템 장애, 서비스 이용의 폭주 등으로 인해 서비스 이용에 지장이 있는 경우<br>
+                ⑦ 기타 합리적인 이유로 회원등록을 제한할 필요가 있는 경우<br>
+                대충 이런 내용들???
+            </p>
+
+        </div>
+    </div>
+
+
+    <hr class="my-4">
+
+
+    <h1 class="mb-3">회원가입 신청서</h1>
+    <form class="needs-validation" novalidate="">
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="lastName" class="form-label">성(Last name)</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                    Valid Last name is required.
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="firstName" class="form-label">이름(First name)</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                    Valid First name is required.
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="nickname" class="form-label">닉네임</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" id="nickname" placeholder="nickname" required="">
+                    <div class="invalid-feedback">
+                        Your nickname is required.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="number" class="form-label">학번</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="number" placeholder="number" required="">
+                    <div class="invalid-feedback">
+                        Your number is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="email" class="form-label">이메일(Email) <span class="text-muted">(Optional)</span></label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">선택지 1</label>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="save-info">
+            <label class="form-check-label" for="save-info">선택지 2</label>
+        </div>
+
+        <hr class="my-4">
+
+        <h4 class="mb-3">사이트 이용 약관에 동의</h4>
+
+        <div class="my-3">
+            <div class="form-check">
+                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                <label class="form-check-label" for="credit">동의합니다</label>
+            </div>
+            <div class="form-check">
+                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                <label class="form-check-label" for="debit">동의하지 않습니다</label>
+            </div>
+
+        </div>
+
+
+
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+    </form>
+    </div>
+
+
+</main>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

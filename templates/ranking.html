@@ -94,15 +94,15 @@
             </tr>
             </thead>
             <tbody>
-            {% if user_data_list %}
-                {% for user in user_data_list %}
+            {% if user_list %}
+                {% for user in user_list %}
                     <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.number }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.birthday }}</td>
+                        <td>{{ user.joined_time }}</td>
 
                     </tr>
                 {% endfor %}

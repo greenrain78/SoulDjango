@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="bootstrap을 이용한 임시 페이지">
+    <meta name="author" content="greenrain">
+    <title>소박하지만 그룹입니다</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"  >
+
+    <style>
+        .container {
+            background-color: #ffffff;
+        }
+        body {
+            background-color: #efefef;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+<!-- 네비게이션 바 -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">소박하지만 그룹입니다</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container-fluid">
+            <ul class="navbar-nav nav-fill mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ranking">랭킹</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        문제들
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">추천 문제</a></li>
+                        <li><a class="dropdown-item" href="#">시도했지만 맞지 못한 문제</a></li>
+                        <li><a class="dropdown-item" href="#">맞은 문제</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">등록된 문제 리스트</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">게시판</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">게시판</a>
+                </li>
+
+                <li class="nav-item d-flex justify-content-end">
+                    <form class="d-flex justify-content-end" action="/signin" method="get">
+                        <button class="btn btn-primary "  onclick="alert('미구현')">Sign In</button>
+                    </form>
+                    <form class="d-flex justify-content-end" action="/signup" method="get">
+                        <button class="btn btn-secondary"  >Sign Up</button>
+                    </form>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</nav>
+
+<!-- 메인 화면 -->
+{% block content %}
+{% endblock %}
+
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.utils import timezone
+
+from chicken_soup.forms import UserForm
 from chicken_soup.models import User
 
 
@@ -15,4 +18,13 @@ def ranking(request):
 
 
 def sign_up(request):
-    return render(request, 'sign_up.html')
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('/')
+    else:
+        form = UserForm()
+    return render(request, 'sign_up.html', {'form': form})

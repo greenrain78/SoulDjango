@@ -17,22 +17,26 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">이름</th>
-                <th scope="col">학번</th>
-                <th scope="col">맞은 문제</th>
-                <th scope="col">제출</th>
-                <th scope="col">정답 비율</th>
+                <th scope="col">exp</th>
+                <th scope="col">tier</th>
+                <th scope="col">higher_rating</th>
+                <th scope="col">class_rating</th>
+                <th scope="col">solved_rating</th>
+                <th scope="col">vote_count_rating</th>
             </tr>
             </thead>
             <tbody>
-            {% if user_list %}
-                {% for user in user_list %}
+            {% if user_rank_list %}
+                {% for user_rank in user_rank_list %}
                     <tr>
-                        <th scope="row">{{ user.id }}</th>
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
-                        <td>{{ user.number }}</td>
-                        <td>{{ user.correct }}</td>
-                        <td>{{ user.submission }}</td>
-                        <td>{{ user.answer_ratio }}</td>
+                        <th scope="row">{{ user_rank.id }}</th>
+                        <td>{{ user_rank.user }}</td>
+                        <td>{{ user_rank.exp }}</td>
+                        <td>{{ user_rank.tier }}</td>
+                        <td>{{ user_rank.higher_rating }}</td>
+                        <td>{{ user_rank.class_rating }}</td>
+                        <td>{{ user_rank.solved_rating }}</td>
+                        <td>{{ user_rank.vote_count_rating }}</td>
 
                     </tr>
                 {% endfor %}
@@ -46,6 +50,7 @@
 
             </tbody>
         </table>
+        <h3> 실행시간 : {{ api_time }}</h3>
     </div>
 </main>
 {% endblock %}

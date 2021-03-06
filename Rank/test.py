@@ -29,7 +29,13 @@ try:
     user_info = json.loads(res1.read().decode('UTF-8'))['result']['user'][0]
     problem_stat = json.loads(res2.read().decode('UTF-8'))['result']
 
+    print(res1)
+    print(user_info)
+    print("---------------------------------")
+    print(res2)
+    print(problem_stat)
     # 현재 정보
+
     print('현재 경험치 :', "{:,}".format(user_info['exp']))
     print('현재 티어 :', levelName(user_info['level']), end='\n\n')
 

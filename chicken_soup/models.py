@@ -6,9 +6,9 @@ from django.utils import timezone
 
 class User(models.Model):
     # name
-    first_name = models.CharField(max_length=10)
-    last_name = models.CharField(max_length=10)
+    name = models.CharField(max_length=10)
     nickname = models.CharField(max_length=30)
+    baekjoon_id = models.CharField(max_length=100, null=True, unique=True)
 
     # number
     number = models.PositiveBigIntegerField(default=0)
@@ -27,12 +27,3 @@ class User(models.Model):
         self.save()
 
 
-class UserRank(models.Model):
-    correct = models.IntegerField(default=0)
-    submission = models.IntegerField(default=0)
-    answer_ratio = models.FloatField(default=0.5)
-    published_date = models.DateTimeField(blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()

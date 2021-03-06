@@ -28,3 +28,4 @@ def sign_up(request):
     else:
         form = UserForm()
     return render(request, 'sign_up.html', {'form': form})
+

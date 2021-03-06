@@ -10,13 +10,6 @@ def index(request):
     return render(request, 'index.html')
 
 
-def ranking(request):
-    user_list = User.objects.all()
-    content = {'user_list': user_list}
-
-    return render(request, 'ranking.html', content)
-
-
 def sign_up(request):
     if request.method == "POST":
         form = UserForm(request.POST)
@@ -29,3 +22,10 @@ def sign_up(request):
         form = UserForm()
     return render(request, 'sign_up.html', {'form': form})
 
+
+def sign_in(request):
+    return None
+
+
+def member_list(request):
+    return None

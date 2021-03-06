@@ -35,11 +35,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="container-fluid">
             <ul class="navbar-nav nav-fill mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        소개
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/members">멤버</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">동아리 소개</a></li>
+                        <li><a class="dropdown-item" href="#">아래꺼는</a></li>
+                        <li><a class="dropdown-item" href="#">미구현이야</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/rank">랭킹</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        랭킹
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/rank">백준 랭킹</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">기타 랭킹</a></li>
+                        <li><a class="dropdown-item" href="#">아무거나</a></li>
+                        <li><a class="dropdown-item" href="#">넣을거야</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -4,6 +4,7 @@ import json
 from urllib.parse import urlparse, parse_qs
 
 from django.contrib import auth
+from django.contrib.auth.hashers import check_password, make_password
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
@@ -45,14 +46,16 @@ class SignUp(View):
         data = temp
         print(data)
         try:
-            if User.objects.filter(user_name=data['user_name']).exists():
+            if User.objects.filter(username=data['username']).exists():
                 return JsonResponse({"message": "해당 이름을 가진 유저가 이미 존재합니다."}, status=401)
 
             # 유저 생성
             User(
-                user_name=data['user_name'][0],
+                username=data['username'][0],
                 nickname=data['nickname'][0],
                 baekjoon_id=data['baekjoon_id'][0],
+                email=data['email'][0],
+                password=make_password(data['password'][0]),
             ).save()
             # User(
             #     user_name=data['user_name'],
@@ -63,6 +66,7 @@ class SignUp(View):
             # return HttpResponse(status=200)
             return redirect('/')
         except KeyError:
+            print("저장 실패")
             return JsonResponse({'message': "잘못된 값이 입력되었습니다."}, status=400)
 
 
@@ -97,13 +101,34 @@ class SignIn(View):
         return render(request, 'sign_in.html')
 
     def post(self, request):
+        content = {}
         login_email = request.POST.get('inputEmail', None)
         login_password = request.POST.get('inputPassword', None)
-        user = auth.authenticate(request, useremail=login_email, password=login_password)
-        print(user)
-        pass
+        if not (login_email and login_password):
+            content['error'] = "아이디와 비밀번호를 모두 입력해주세요."
+        try:
+            if User.objects.filter(email=login_email).exists():
+                user = User.objects.get(email=login_email)
+                if check_password(login_password, user.password):
+                    request.session['user'] = user.id
+                    return redirect('/')
+                return JsonResponse({'message': "Wrong password"}, status=400)
+            # return HttpResponse(status=401)
+            return JsonResponse({'message': "Do not Exist"}, status=400)
+        except KeyError:
+            return JsonResponse({'message': "INVALID_KEYS"}, status=400)
 
 
 def member_list(request):
-    content = {'member_list': User.objects.all()}
+    user_id = request.session.get('user')
+    if user_id:
+        user = User.objects.get(pk=user_id)  # pk : primary key
+        session = user.username
+    else:
+        session = "로그인을 해주세요"
+    content = {'member_list': User.objects.all(), 'session': session}
     return render(request, 'member_list.html', content)
+
+
+def logout(request):
+    return redirect('/')

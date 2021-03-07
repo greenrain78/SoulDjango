@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- 메인 화면 -->
+<main class="container">
+
+    <div class="starter-template text-center py-5 px-3">
+        <h1>소박하지만 그룹입니다</h1>
+        <p class="lead"> 알고리즘 기초 난이도인 Bronze부터  숙달된 난이도인 Diamond까지 <br>
+            DFS, BFS 의 기본적인 알고리즘부터  TreeDP, Segtree 의 중급 알고리즘을 거쳐 HLD, LCA 의 고급 알고리즘까지
+        </p>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <caption>맴버 리스트</caption>
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">이름</th>
+                <th scope="col">별명</th>
+                <th scope="col">백준 아이디</th>
+                <th scope="col">이메일</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if member_list %}
+                {% for member in member_list %}
+                    <tr>
+                        <th scope="row">{{ member.id }}</th>
+                        <td>{{ member.user_name }}</td>
+                        <td>{{ member.nickname }}</td>
+                        <td>{{ member.baekjoon_id }}</td>
+                        <td>{{ member.email }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <th scope="row">no date</th>
+                    <td colspan="5">데이터가 존재하지 않습니다.</td>
+
+                </tr>
+            {% endif %}
+
+            </tbody>
+        </table>
+        <h3> 실행시간 : {{ api_time }}</h3>
+    </div>
+</main>
+{% endblock %}
+

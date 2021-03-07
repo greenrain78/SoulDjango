@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- 메인 화면 -->
+    <main class="container">
+        <div class="starter-template text-center py-5 px-3">
+            <h2>대충 로그인하는 화면</h2>
+        </div>
+
+        <div class="starter-template text-center py-5 px-3">
+
+            <form method="POST" class="post-form">{% csrf_token %}
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <label for="inputEmail" class="sr-only">이메일을 입력해 주세요</label>
+                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required="inputEmail1"
+                       autofocus="">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword1">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+
+        </div> <!-- /container -->
+
+
+    </main>
+
+{% endblock %}
+

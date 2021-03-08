@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views import View
 
+from Rank.models import UserRank
 from chicken_soup.forms import UserForm
 from chicken_soup.models import User
 
@@ -48,15 +49,20 @@ class SignUp(View):
         try:
             if User.objects.filter(username=data['username']).exists():
                 return JsonResponse({"message": "해당 이름을 가진 유저가 이미 존재합니다."}, status=401)
-
+            if User.objects.filter(baekjoon_id=data['baekjoon_id']).exists():
+                return JsonResponse({"message": "해당 백준 아이디를 가진 유저가 이미 존재합니다."}, status=401)
             # 유저 생성
-            User(
+            user = User(
                 username=data['username'][0],
                 nickname=data['nickname'][0],
                 baekjoon_id=data['baekjoon_id'][0],
                 email=data['email'][0],
                 password=make_password(data['password'][0]),
-            ).save()
+            )
+            print(user)
+            user.save()
+            UserRank(user=user).save()
+
             # User(
             #     user_name=data['user_name'],
             #     nickname=data['nickname'],
@@ -70,29 +76,29 @@ class SignUp(View):
             return JsonResponse({'message': "잘못된 값이 입력되었습니다."}, status=400)
 
 
-class UserView(View):
-
-    # post로 유저 생성
-    def post(self, request):
-        data = json.loads(request.body)
-        try:
-            if User.objects.filter(user_name=data['user_name']).exists():
-                return JsonResponse({"message": "USER_ALREADY_EXIST"}, status=401)
-
-            # 유저 생성
-            User(
-                user_name=data['user_name'],
-                nickname=data['nickname'],
-                baekjoon_id=data['baekjoon_id'],
-            ).save()
-            return HttpResponse(status=200)
-        except KeyError:
-            return JsonResponse({'message': "INVALID_KEYS"}, status=400)
-
-    # 유저 조회
-    def get(self, request):
-        users = User.objects.values()
-        return JsonResponse({"data": list(users)}, status=200)
+# class UserView(View):
+#
+#     # post로 유저 생성
+#     def post(self, request):
+#         data = json.loads(request.body)
+#         try:
+#             if User.objects.filter(user_name=data['user_name']).exists():
+#                 return JsonResponse({"message": "USER_ALREADY_EXIST"}, status=401)
+#
+#             # 유저 생성
+#             user= User(
+#                 user_name=data['user_name'],
+#                 nickname=data['nickname'],
+#                 baekjoon_id=data['baekjoon_id'],
+#             ).save()
+#             return HttpResponse(status=200)
+#         except KeyError:
+#             return JsonResponse({'message': "INVALID_KEYS"}, status=400)
+#
+#     # 유저 조회
+#     def get(self, request):
+#         users = User.objects.values()
+#         return JsonResponse({"data": list(users)}, status=200)
 
 
 class SignIn(View):

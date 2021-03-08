@@ -31,13 +31,14 @@ def refresh():
     api_client = SolvedAcAPI()
     for user_rank in UserRank.objects.all():
         res_info = api_client.fetch_user_info(user_rank.user.baekjoon_id)
-        res_problem = api_client.fetch_user_problem(user_rank.user.baekjoon_id)
-        rate = Rating.user_Rating(res_info, res_problem)
-        user_rank.exp = rate['exp']
-        user_rank.tier = rate['tier']
-        user_rank.higher_rating = rate['higher_rating']
-        user_rank.class_rating = rate['class_rating']
-        user_rank.solved_rating = rate['solved_rating']
-        user_rank.vote_count_rating = rate['vote_count_rating']
-        user_rank.save()
+        if res_info:
+            res_problem = api_client.fetch_user_problem(user_rank.user.baekjoon_id)
+            rate = Rating.user_Rating(res_info, res_problem)
+            user_rank.exp = rate['exp']
+            user_rank.tier = rate['tier']
+            user_rank.higher_rating = rate['higher_rating']
+            user_rank.class_rating = rate['class_rating']
+            user_rank.solved_rating = rate['solved_rating']
+            user_rank.vote_count_rating = rate['vote_count_rating']
+            user_rank.save()
 

@@ -20,8 +20,12 @@ class SolvedAcAPI:
         if response.status_code != 200:
             raise ValueError(json_resp.get('message', 'API Error'))
         # get user info
-        userInfo = json_resp.get('result').get('user')
-        return userInfo[0]
+        print(json_resp)
+        if json_resp.get('success'):
+            userInfo = json_resp.get('result').get('user')
+            return userInfo[0]
+        else:
+            return None
 
     def fetch_user_problem(self, name: str):
         url = f'{self.api_url}/users/problem_stats.json?id={name}'
